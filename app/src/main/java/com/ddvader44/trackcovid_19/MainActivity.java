@@ -105,5 +105,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void trackYourCountry(View view) {
     startActivity(new Intent(MainActivity.this,Countries.class));
+    finish();
     }
 }

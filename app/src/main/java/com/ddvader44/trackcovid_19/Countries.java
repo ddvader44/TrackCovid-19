@@ -2,9 +2,13 @@ package com.ddvader44.trackcovid_19;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -43,6 +47,28 @@ public class Countries extends AppCompatActivity {
         simpleArcLoader = findViewById(R.id.loader2);
 
         getCovidDetails();
+
+        country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getApplicationContext(),CoronaCasesCountry.class).putExtra("position",position));
+                finish();
+            }
+        });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.getFilter().filter(s);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) { }
+        });
     }
     private void getCovidDetails() {
         String URL = "https://corona.lmao.ninja/v2/countries/";
