@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                             todayDeaths.setText(jsonObject.getString("todayDeaths"));
                             affectedCountries.setText(jsonObject.getString("affectedCountries"));
 
-                            pieChart.addPieSlice(new PieModel("Cases",Integer.parseInt(cases.getText().toString()), Color.parseColor("#FFA726")));
+
                             pieChart.addPieSlice(new PieModel("Recovered",Integer.parseInt(recovered.getText().toString()), Color.parseColor("#66BB6A")));
                             pieChart.addPieSlice(new PieModel("Deaths",Integer.parseInt(totalDeaths.getText().toString()), Color.parseColor("#EF5350")));
                             pieChart.addPieSlice(new PieModel("Active",Integer.parseInt(active.getText().toString()), Color.parseColor("#29B6F6")));
